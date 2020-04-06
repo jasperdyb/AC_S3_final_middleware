@@ -7,8 +7,14 @@ const port = 3000
 app.use((req, res, next) => {
 
   let timeStamp = new Date(Date.now())
+  const startHrTime = process.hrtime()
 
-  console.log(`${timeStamp.toLocaleString()} | ${req.method} from ${req.url}`)
+  res.on("finish", () => {
+    const elapsedHrTime = process.hrtime(startHrTime)
+    console.log(elapsedHrTime)
+    const elapsedTimeInMs = elapsedHrTime[0] * 1000 + elapsedHrTime[1] / 1e6;
+    console.log(`${timeStamp.toLocaleString()} | ${req.method} from ${req.url} | total time: ${elapsedTimeInMs} ms`);
+  })
 
   next()
 })
