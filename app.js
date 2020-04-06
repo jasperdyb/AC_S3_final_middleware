@@ -10,6 +10,7 @@ app.use((req, res, next) => {
 
   res.send(`${timeStamp.toLocaleString()} | ${req.method} from ${req.url}`)
 
+  console.log(`${timeStamp.toLocaleString()} | ${req.method} from ${req.url}`)
 })
 
 // 列出全部 Todo
