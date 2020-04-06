@@ -8,8 +8,9 @@ app.use((req, res, next) => {
 
   let timeStamp = new Date(Date.now())
 
-  res.send(`${timeStamp.toLocaleString()} | ${req.method} from ${req.url}`)
+  console.log(`${timeStamp.toLocaleString()} | ${req.method} from ${req.url}`)
 
+  next()
 })
 
 // 列出全部 Todo
