@@ -8,6 +8,8 @@ app.use((req, res, next) => {
 
   let timeStamp = new Date(Date.now())
   console.log(`${timeStamp.toLocaleString()} | ${req.method} from ${req.url}`)
+
+  next()
 })
 
 // 列出全部 Todo
